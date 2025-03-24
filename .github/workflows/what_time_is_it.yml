@@ -17,7 +17,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Display branch name
-        run: echo "Running on branch:${{ github.ref_name }}"
+        run: ls -a
 
       - name: Check repository size
         run: du -skh --exclude=".git"
+
