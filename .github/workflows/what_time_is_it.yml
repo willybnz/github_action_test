@@ -1,12 +1,23 @@
-name: test
+name: Repository Size
+
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Get the current date
-              run: echo "The time is $(date)"
+  check-size:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Display branch name
+        run: echo "Running on branch:${{ github.ref_name }}"
+
+      - name: Check repository size
+        run: du -skh --exclude=".git"
