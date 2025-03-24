@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Display branch name
-        run: ls -a
+        run: cat src/main.c
 
       - name: Check repository size
         run: du -skh --exclude=".git"
